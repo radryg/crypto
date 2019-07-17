@@ -1,0 +1,75 @@
+{% extends "predictions/header.html" %}
+{% load static %}
+{% block content %}
+
+    {% if all_predictions %}
+      <div class="container">
+        <div class="row">
+          <div class="col-12">
+          <p></p>
+          </div>
+        </div>
+
+        {% for p in all_predictions %}
+          {% if not forloop.counter|divisibleby:2 %}
+              <div class="row">
+                <div class="col-6">  
+                  <a href ="{% url 'predictions:prediction' p.coin_name %}"><h5>{{ p.title }}</a>
+                  {% if p.prediction_type == 'L' %}
+                    <img src="{% static 'prediction/icons/long.png' %}" class="img-fluid" alt="Long">
+                  {% elif p.prediction_type == 'S' %}
+                    <img src="{% static 'prediction/icons/short.png' %}" class="img-fluid" alt="Short">
+                  {% endif %}   
+                  {% if forloop.counter == 1 %}
+                    <img src="{% static 'prediction/icons/crown.png' %}" class="img-fluid" alt="The Winner">
+                  {% endif %}
+                </h5>
+                <div class="row">
+                  <div class="col">
+                    <p>Published: {{ p.pub_date }}</p>
+                  </div>
+                  <div class="col">
+                    <p align=right>Votes: {{ p.votes }}</p>
+                  </div>
+                </div>
+                  <p>{{ p.description }}</p>
+                  <p>Entry: {{ p.entry }}</p>
+                  {% for t in p.target_set.all  %}
+                    <p>Target {{ forloop.counter }}: {{ t }}</p>
+                  {% endfor %}                        
+                  <p>Stoploss: {{ p.stop_loss }}</p>
+                </div>
+          {% elif forloop.counter|divisibleby:2 %}
+                <div class="col-6">  
+                  <a href ="{% url 'predictions:prediction' p.coin_name %}"><h5>{{ p.title }}</a>
+                  {% if p.prediction_type == 'L' %}
+                    <img src="{% static 'prediction/icons/long.png' %}" class="img-fluid" alt="Long">
+                  {% elif p.prediction_type == 'S' %}
+                    <img src="{% static 'prediction/icons/short.png' %}" class="img-fluid" alt="Short">
+                  {% endif %}  
+                </h5>
+                  <div class="row">
+                  <div class="col">
+                    <p>Published: {{ p.pub_date }}</p>
+                  </div>
+                  <div class="col">
+                    <p align=right>Votes: {{ p.votes }}</p>
+                  </div>
+                </div>
+                  <p>{{ p.description }}</p>
+                  <p>Entry: {{ p.entry }}</p>
+                  {% for t in p.target_set.all  %}
+                    <p>Target {{ forloop.counter }}: {{ t }}</p>
+                  {% endfor %}  
+                  <p style="display: inline">Stoploss: {{ p.stop_loss }}</p>
+                </div>
+              </div>
+          {% endif %}      
+        {% endfor %}
+      </div>
+        
+    {% else %}
+        No predictions available.
+    {% endif %}
+
+{% endblock %}

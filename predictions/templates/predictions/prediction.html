@@ -1,0 +1,41 @@
+
+{% include "predictions/header.html" %}
+{% load static %}
+
+<div class="container">
+    <div class="row">
+        <div class="col">
+        <br>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col"> 
+            <h5>{{ prediction.title }} </h5>
+            <p>Published: {{ prediction.pub_date }}</p>
+            <p>{{ prediction.description }}</p>   
+            <p>BTC price when published: {{ prediction.current_price }}</p>
+            <p>Current price: {{ btcprice }}</p>
+            {% for t in target %}
+                <p>Target {{ forloop.counter }}: {{ t }}</p>
+            {% endfor %}
+            <p>Get back to all <a href="{% url 'predictions:index' %}">predictions.</a></p>
+        </div>
+        <div class="col">
+            <p>{{ btcprice }}</p>
+            <p>{{ current_rank }}</p>
+            <p>{{ price_usd }}</p>
+            <p>{{ daily_vol }}</p>
+            <p>{{ market_cap }}</p>
+            <p>{{ available_supply }}</p>
+            <p>{{ total_supply }}</p>
+            <p>{{ max_supply }}</p>
+            <p>{{ change_1h }}</p>
+            <p>{{ change_24h }}</p>
+            <p>{{ change_7d }}</p>
+        </div>
+            
+
+             
+        </div>
+    </div>
+</div>

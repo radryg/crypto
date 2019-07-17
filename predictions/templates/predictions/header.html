@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'prediction/css/bootstrap.css' %}"/>
+
+    <title>Crypto predictions</title>
+
+      <div class="container">
+        <div class="row">
+          <div class="col-md-4">BTC price: 3452 $ ETH price: $</div>
+          <div class="col-md-4 offset-md-4" align="right">
+            <a href="{% url 'login' %}">Login</a>
+            <a href="{% url 'logout' %}">Log Out</a>
+        </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <a href="{% url 'predictions:index' %}"><img src="{% static 'prediction/images/top_splash.png' %}" class="img-fluid" alt="Crypto-predictions"></a>
+          </div>                 
+        </div>
+        <div class="row">
+          <div class="col">
+            <nav class="nav nav-pills nav-justified">
+                <a class="cd..nav-item nav-link active" href="{% url 'predictions:add_prediction' %}">Add Prediction</a>
+                <a class="nav-item nav-link" href="{% url 'predictions:index' %}">Newest</a>
+                <a class="nav-item nav-link" href="{% url 'predictions:top_predictions' %}">Top</a>
+                <a class="nav-item nav-link" href="#">Contact</a>
+                <a class="nav-item nav-link" href="#">Indicators</a>
+                <a class="nav-item nav-link" href="#">Hall of Fame</a>
+                <a class="nav-item nav-link" href="#">Following</a>
+            </nav>
+          </div>                 
+        </div>
+      </div>
+      
+  </head>
+
+  <body>
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+      {% block content %}
+      {% endblock %}
+      </div>
+    </div>
+  </div>
+
+
+
+  </body>
+
+</html>

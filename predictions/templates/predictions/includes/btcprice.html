@@ -1,0 +1,7 @@
+{% extends "market/coin.html" %}
+{% block content %}
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'market/css/bootstrap.css' %}" />
+eloelo
+{% autoescape off %}{{ coinname_long }} price:{{ btcprice }} BTC{% endautoescape %}
+{% endblock %}

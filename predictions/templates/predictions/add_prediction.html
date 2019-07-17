@@ -1,0 +1,45 @@
+{% extends "predictions/header.html" %}
+{% block content %}
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'prediction/css/bootstrap.css' %}" />
+<form method="post" action="">
+    {% csrf_token %}
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-4">
+      <div class="col">
+        
+    </div>
+    <div class="col-md-4 offset-md-4">
+    </div>
+
+        <div class="field">
+            <label for="title">Title:</label>
+                {{ prediction_form.title}}
+        </div>
+        <div class="field">
+            <label for="description">Description:</label>
+            {{ prediction_form.description }}
+        </div>
+        <div class="field">
+            <label for="coin_name">Coin:</label>
+            {{ prediction_form.coin_name }}
+        </div>
+        <div class="field">
+            <label for="prediction_type">Type:</label>
+            {{ prediction_form.prediction_type }}
+        </div>
+        <div class="field">
+            <label for="entry">Entry:</label>
+            {{ prediction_form.entry }}
+        </div>
+        <div class="field">
+            <label for="stop_loss">Stop loss:</label>
+            {{ prediction_form.stop_loss }}
+        </div>
+
+    <input type="submit" value="Create">
+</form>
+{% endblock %}
+

@@ -1,0 +1,6 @@
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'market/css/bootstrap.css' %}" />
+{% block content %}
+    <h1>{{ coin.coinname_long }} </h1>
+    {% include 'market/includes/btcprice.html' %}
+{% endblock %}
